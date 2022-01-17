@@ -12,34 +12,42 @@ import evaluationcours4.exception_.ArticleException;
  */
 public class Article {
 
-    public static int nombreObjetCrée;
+    public static int nombreObjetCrée=0;
     //atribut d'inctance
     private String nom;
-    private int code;
+    private int id;
     private double prix;
 
     public Article() {
         nombreObjetCrée++;
-        code = 1;
+        id = 1;
         nom = "Televieur";
         
     }
     
     public Article(String nom) {
         nombreObjetCrée++;
-        this.code = nombreObjetCrée;
+        this.id = nombreObjetCrée;
         this.nom = nom;
         
     }
+    
+      public static int getNbArticlesCrees() {
+        return nombreObjetCrée;
+    }
+
+    public static void setNbArticlesCrees(int aNbArticlesCrees) {
+        nombreObjetCrée = aNbArticlesCrees;
+    }
 
     public Article(String nom, int code) {
-        this.code = code;
+        this.id = code;
         this.nom = nom;
         //this.couleur = Couleurs.BLEU;
     }
 
     public Article(String nom, int code, double prix) throws ArticleException{
-        this.code = code;
+        this.id = code;
         if (nom.length() < 2) {
             throw new ArticleException(nom);
         } else {
@@ -63,7 +71,7 @@ public class Article {
             }
      */
     public String getNom() {
-        return this.nom.toUpperCase();
+        return nom.toUpperCase();
     }
 
     public void setNom(String name) {
@@ -71,12 +79,12 @@ public class Article {
     }
 
     public int getID() {
-        return this.code * 2;
+        return id ;
         //return this.String.valueOf(code);
     }
 
     public void setID(int identifiant) {
-        this.code = identifiant;
+        this.id = identifiant;
     }
 
 }
