@@ -11,80 +11,47 @@ import evaluationcours4.exception_.ArticleException;
  * @author Mike
  */
 public class Article {
-
-    public static int nombreObjetCrée=0;
-    //atribut d'inctance
-    private String nom;
+    private static int nbArticlesCrees = 0;
     private int id;
-    private double prix;
-
-    public Article() {
-        nombreObjetCrée++;
-        id = 1;
-        nom = "Televieur";
-        
-    }
+    private String nom;
+    private boolean validee;
+    
     
     public Article(String nom) {
-        nombreObjetCrée++;
-        this.id = nombreObjetCrée;
+        nbArticlesCrees++;
+        this.id = nbArticlesCrees;
         this.nom = nom;
-        
     }
-    
-      public static int getNbArticlesCrees() {
-        return nombreObjetCrée;
+
+
+    public static int getNbArticlesCrees() {
+        return nbArticlesCrees;
     }
 
     public static void setNbArticlesCrees(int aNbArticlesCrees) {
-        nombreObjetCrée = aNbArticlesCrees;
+        nbArticlesCrees = aNbArticlesCrees;
     }
 
-    public Article(String nom, int code) {
-        this.id = code;
-        this.nom = nom;
-        //this.couleur = Couleurs.BLEU;
+    public boolean isValidee() {
+        return validee;
     }
 
-    public Article(String nom, int code, double prix) throws ArticleException{
-        this.id = code;
-        if (nom.length() < 2) {
-            throw new ArticleException(nom);
-        } else {
-            this.nom = nom;
-        }
-        if (prix < 0) {
-            throw new ArticleException(prix);
-        } else {
-            this.prix = prix;
-        }
-
+    public void setValidee(boolean validee) {
+        this.validee = validee;
     }
 
-    public void afficher() {
-        System.out.println(this.getNom());
-    }
-
-    /*
-    Article(String name) {
-    name=nom;
-            }
-     */
     public String getNom() {
-        return nom.toUpperCase();
+        return nom;
     }
 
-    public void setNom(String name) {
-        this.nom = name;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public int getID() {
-        return id ;
-        //return this.String.valueOf(code);
+    @Override
+    public String toString() {
+       return this.id + " " + this.nom + (this.validee ? " validee": "");
     }
-
-    public void setID(int identifiant) {
-        this.id = identifiant;
-    }
-
+    
+    
 }

@@ -4,9 +4,9 @@
  */
 package evaluationcours4.Compte;
 
-import evaluationcours4.enum_.Droits;
+import evaluationcours4.enum_.Profils;
 import evaluationcours4.exception_.ArticleException;
-import evaluationcours4.exception_.PasswordException;
+import evaluationcours4.exception_.IntrusionException;
 import java.util.Scanner;
 
 /**
@@ -20,27 +20,27 @@ public class UtilisateurDuLogiciel {
 
     private String login;
     private String password;
-    private Droits droit;
+    private Profils droit;
 
     public UtilisateurDuLogiciel() {
         this.login = "Login";
         this.password = "motdepass";
-        this.droit = Droits.AGENTDESAISIE;
+        this.droit = Profils.AGENTDESAISIE;
     }
 
-    public UtilisateurDuLogiciel(String login, String motdepass) throws PasswordException {
+    public UtilisateurDuLogiciel(String login, String motdepass) throws IntrusionException {
         nombreConnexion++;
         if (nombreConnexion < 2) {
-            throw new PasswordException();
+            throw new IntrusionException();
         } else {
             this.login = login;
             this.password = motdepass;
-            this.droit = Droits.AGENTDESAISIE;
+            this.droit = Profils.AGENTDESAISIE;
         }
 
     }
 
-    public UtilisateurDuLogiciel(String login, String motdepass, Droits droit) {
+    public UtilisateurDuLogiciel(String login, String motdepass, Profils droit) {
         this.login = login;
         this.password = motdepass;
         this.droit = droit;
@@ -66,11 +66,11 @@ public class UtilisateurDuLogiciel {
 
     }
 
-    public Droits getDroitsUtilisateur() {
+    public Profils getDroitsUtilisateur() {
         return this.droit;
     }
 
-    public void setDroitsUtilisateur(Droits droituser) {
+    public void setDroitsUtilisateur(Profils droituser) {
 
         this.droit = droituser;
 

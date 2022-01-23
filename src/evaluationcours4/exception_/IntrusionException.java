@@ -8,13 +8,13 @@ package evaluationcours4.exception_;
  *
  * @author Mike
  */
-public class PasswordException extends Exception {
+public class IntrusionException extends Exception {
     
     //public PasswordException(Double prix){
     //    System.out.println("Le prix est negatif");
     //}
-    public PasswordException(){
+    public IntrusionException(){
         //System.out.println("Veuillez rentrer un bon Nom d' Utilisateur/ Mot de passe ");
-        System.out.println("Tentative d’intrusion");
+        System.out.println("Tentative d'intrusion");
     }
 }
